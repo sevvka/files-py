@@ -1,0 +1,32 @@
+def dannie():
+    Imya = input("Имя пользователя: ")
+    datar = input("Дата рождения: ")
+    Gorod = input("Город проживания: ")
+    return f"Имя пользователя: {Imya}\nДата рождения: {datar}\nГород проживания: {Gorod}\n \n"
+
+
+
+
+while True:
+    deistvie = input("1)Прочитать файл, 2)Ввести данные пользователя, 3)Добавить данные пользователя, 4)Завершение работы программы: ")
+    if deistvie == "1":
+        file = open('.vscode\papka\info.txt', 'r', encoding='utf-8')
+        content = file.read()
+        print(content)
+        file.close()
+        continue
+    elif deistvie == "2":
+        file = open('.vscode\papka\info.txt', 'w', encoding='utf-8')
+        info = dannie()
+        file.write(info)
+        file.close()
+        continue
+    elif deistvie == "3":
+        file = open('.vscode\papka\info.txt', 'a', encoding='utf-8')
+        info = dannie()
+        file.write(info)
+        file.close()
+        continue
+    elif deistvie == "4":
+        print("завершение работы программы")
+        break
