@@ -1,0 +1,58 @@
+
+def dannie():
+    Imya = input("Имя пользователя: ").capitalize()
+    datar = input("Дата рождения: ")
+    Gorod = input("Город проживания: ")
+    return f"Имя пользователя: {Imya}\nДата рождения: {datar}\nГород проживания: {Gorod}\n-------\n"
+
+def vibor(polz):
+    global content
+    zaversh = "-------"
+    if polz in content:
+        startfrom = content.find(polz)
+        endat = content.find(zaversh, startfrom)
+        print(content[startfrom:endat])
+    else:
+        print("пользователь не найден")
+
+
+while True:
+    try:
+        deistvie = input("1)Прочитать файл, 2)Ввести данные пользователя, 3)Добавить данные пользователя, 4)Завершение работы программы: ")
+        deistvie = int(deistvie)
+    except ValueError:
+        print("введите число из представленных, ошибка ввода")
+        continue
+    if deistvie == 1:
+        while True:
+            try:
+                zapros = input("1 прочитать весь файл, 2 прочитать информацию про определенного пользователя: ")
+                zapros = int(zapros)
+            except ValueError:
+                print("введите число из представленных, ошибка ввода")
+                continue
+            if zapros == 1:
+                with open('.vscode\papka\info.txt', 'r', encoding='utf-8') as file:
+                    content = file.read()
+                    print(content)
+                    break
+            elif zapros == 2:
+                with open('.vscode\papka\info.txt', 'r', encoding='utf-8') as file:
+                    content = file.read()
+                    print("Введите имя пользователя, информацию про которого вы хотите найти")
+                    zapros2 = input("Имя пользователя: ").capitalize()
+                    vibor(zapros2)
+                    break
+    elif deistvie == 2:
+        with open('.vscode\papka\info.txt', 'w', encoding='utf-8') as file:
+            info = dannie()
+            file.write(info)
+            continue
+    elif deistvie == 3:
+        with open('.vscode\papka\info.txt', 'a', encoding='utf-8') as file:
+            info = dannie()
+            file.write(info)
+            continue
+    elif deistvie == 4:
+        print("завершение работы программы")
+        break
